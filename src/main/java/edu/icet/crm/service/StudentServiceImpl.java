@@ -5,11 +5,11 @@ import edu.icet.crm.entity.StudentEntity;
 import edu.icet.crm.model.Student;
 import edu.icet.crm.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +29,12 @@ public class StudentServiceImpl implements StudentService {
         List<Student> studentModels = new ArrayList<>();
         all.forEach(studentEntity -> studentModels.add(mapper.convertValue(studentEntity, Student.class)));
         return studentModels;
+    }
+
+    @Override
+    public void removeStudent(Integer studentId) {
+        Optional<StudentEntity> byId = studentRepository.findById(studentId);
+        StudentEntity studentEntity = mapper.convertValue(byId, StudentEntity.class);
+        studentRepository.delete(studentEntity);
     }
 }

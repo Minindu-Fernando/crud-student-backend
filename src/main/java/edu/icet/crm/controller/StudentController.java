@@ -22,4 +22,9 @@ public class StudentController {
     List<Student> retrive(){
         return studentService.retrive();
     }
+
+    @DeleteMapping("/student")
+    void remove(@RequestParam(name = "id") Integer studentId){
+        studentService.removeStudent(studentId);
+    }
 }

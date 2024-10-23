@@ -8,4 +8,6 @@ public interface StudentService {
     Student presist(Student student);
 
     List<Student> retrive();
+
+    void removeStudent(Integer studentId);
 }
