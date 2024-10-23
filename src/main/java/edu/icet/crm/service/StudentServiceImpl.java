@@ -37,4 +37,20 @@ public class StudentServiceImpl implements StudentService {
         StudentEntity studentEntity = mapper.convertValue(byId, StudentEntity.class);
         studentRepository.delete(studentEntity);
     }
+
+    @Override
+    public Student updateStudent(Integer studentId, Student updateStudent) {
+        StudentEntity studentEntity = studentRepository.findById(studentId).orElseThrow(() -> new RuntimeException("Student Not Found"));
+
+        studentEntity.setStudentName(updateStudent.getStudentName());
+        studentEntity.setStudentAge(updateStudent.getStudentAge());
+        studentEntity.setStudentContact(updateStudent.getStudentContact());
+        studentEntity.setGurdianName(updateStudent.getGurdianName());
+        studentEntity.setGurdianAddress(updateStudent.getGurdianAddress());
+        studentEntity.setGurdianContact(updateStudent.getStudentContact());
+
+        StudentEntity updatedEntity = studentRepository.save(studentEntity);
+        return mapper.convertValue(updatedEntity, Student.class);
+
+    }
 }

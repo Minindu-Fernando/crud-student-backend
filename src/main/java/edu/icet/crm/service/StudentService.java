@@ -10,4 +10,6 @@ public interface StudentService {
     List<Student> retrive();
 
     void removeStudent(Integer studentId);
+
+    Student updateStudent(Integer studentId, Student student);
 }

@@ -27,4 +27,9 @@ public class StudentController {
     void remove(@RequestParam(name = "id") Integer studentId){
         studentService.removeStudent(studentId);
     }
+
+    @PutMapping("/student")
+    Student update(@RequestParam(name = "id") Integer studentId, @RequestBody Student student){
+        return studentService.updateStudent(studentId,student);
+    }
 }
