@@ -53,4 +53,10 @@ public class StudentServiceImpl implements StudentService {
         return mapper.convertValue(updatedEntity, Student.class);
 
     }
+
+    @Override
+    public Student searchStudent(Integer studentId) {
+        Optional<StudentEntity> byId = studentRepository.findById(studentId);
+        return mapper.convertValue(byId, Student.class);
+    }
 }

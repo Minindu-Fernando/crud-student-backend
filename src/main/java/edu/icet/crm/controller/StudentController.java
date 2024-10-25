@@ -32,4 +32,9 @@ public class StudentController {
     Student update(@RequestParam(name = "id") Integer studentId, @RequestBody Student student){
         return studentService.updateStudent(studentId,student);
     }
+
+    @GetMapping("/students")
+    Student getStudent(@RequestParam(name = "id") Integer studentId){
+        return studentService.searchStudent(studentId);
+    }
 }
